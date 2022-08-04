@@ -61,7 +61,31 @@ def intro_click_pose():
     print(Fore.BLUE + 'Enter 2 to practice a STRENGTH pose')
     print(Fore.BLUE + 'Enter 3 to practice a TORSION pose')
     print(Fore.BLUE + 'Enter 4 to practice a BALANCE pose\n')
-    print(Fore.GREEN + "Don't forget to leave your feedback")
+    print(Fore.GREEN + "**Don't forget to leave your feedback")
     print(Fore.GREEN + "when finished" + "\U0001F64F\n")
-    
+    print(Fore.MAGENTA + "So, let's get started?")
+    print(Fore.MAGENTA + "Unfold your yoga mat and take a deep breath!")
+    print(Fore.RESET)
+
 intro_click_pose()
+
+def pose_type_choice():
+    """
+    Function that selects the user's choice
+    """
+    type_choice = input(Fore.BLUE + 'Please, make your choice (1, 2, 3 or 4)\n' + Fore.RESET)
+    print(Fore.RESET)
+    if type_choice == '1':
+        display_random_stretch()
+    elif type_choice == '2':
+        display_random_strength()
+    elif type_choice == '3':
+        display_random_torsion()
+    elif type_choice == '4':
+        display_random_balance()
+    else:
+        print(f'You entered {Fore.RED + type_choice + Fore.RESET}.')
+        print('You must choose 1, 2, 3, or 4\n')
+        return pose_type_choice()
+
+pose_type_choice()
