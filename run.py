@@ -67,13 +67,24 @@ def intro_click_pose():
     print(Fore.MAGENTA + "Unfold your yoga mat and take a deep breath!")
     print(Fore.RESET)
 
-intro_click_pose()
+
+def display_random_stretch():
+    """
+    Function that displays randomly the
+    instructions to execute the stretch poses.
+    """
+    print("You chose 1")
+    stretch_row = SHEET.worksheet('stretch').row_values(2)
+    # name_stretch_poses = SHEET.worksheet('stretch').col_values(1)
+    # print(name_stretch_poses)
+    print(stretch_row)
 
 def pose_type_choice():
     """
     Function that selects the user's choice
     """
-    type_choice = input(Fore.BLUE + 'Please, make your choice (1, 2, 3 or 4)\n' + Fore.RESET)
+    type_choice = input(Fore.BLUE + 
+        'Please, make your choice (1, 2, 3 or 4)\n' + Fore.RESET)
     print(Fore.RESET)
     if type_choice == '1':
         display_random_stretch()
@@ -88,4 +99,31 @@ def pose_type_choice():
         print('You must choose 1, 2, 3, or 4\n')
         return pose_type_choice()
 
-pose_type_choice()
+
+def display_random_strength():
+    """
+    Function that displays randomly the 
+    instructions to execute the strength poses.
+    """
+
+def display_random_torsion():
+    """
+    Function that displays randomly the 
+    instructions to execute the torsion poses.
+    """
+
+def display_random_balance():
+    """
+    Function that displays randomly the 
+    instructions to execute the balance poses.
+    """
+
+def main():
+    """
+    Main function that runs the applications functions
+    """
+    intro_click_pose()
+    pose_type_choice()
+
+
+main()
