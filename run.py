@@ -32,8 +32,8 @@ Variables created to check proper connection with worksheets
 # data_stretch = stretch.get_all_values()
 # print(data_stretch)
 
-strength = SHEET.worksheet('strength')
-data_strength = strength.get_all_values()
+# strength = SHEET.worksheet('strength')
+# data_strength = strength.get_all_values()
 # print(data_strength)
 
 torsion = SHEET.worksheet('torsion')
@@ -88,14 +88,46 @@ def random_stretch():
     benefits = all_stretches[2]
 
     for (name, instructions, benefits) in zip(name, instructions, benefits):
-        # print(f' {name} - {instructions} - {benefits}')
-
+        
         print(Fore.GREEN + name)
         print("\n")
         print(Fore.BLUE + "INSTRUCTIONS: " + Fore.RESET + instructions)
         print("\n")
         print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
         print("\n")
+    return pose_type_choice()
+    
+
+def random_strength():
+    """
+    Function that displays randomly the
+    instructions to execute the strength poses
+    and its benefits.
+    """
+    print("You chose 2\n")
+
+    strength = SHEET.worksheet('strength')
+
+    all_strengths = []
+    for ind in range(1, 6):
+        all_col = strength.col_values(ind)
+        all_strengths.append(all_col[1:])
+
+    name = all_strengths[0]
+    instructions = all_strengths[1]
+    benefits = all_strengths[2]
+
+    for (name, instructions, benefits) in zip(name, instructions, benefits):
+        
+        print(Fore.GREEN + name)
+        print("\n")
+        print(Fore.BLUE + "INSTRUCTIONS: " + Fore.RESET + instructions)
+        print("\n")
+        print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
+        print("\n")
+
+    return pose_type_choice()
+
 
 def pose_type_choice():
     """
@@ -107,7 +139,7 @@ def pose_type_choice():
     if type_choice == '1':
         random_stretch()
     elif type_choice == '2':
-        display_random_strength()
+        random_strength()
     elif type_choice == '3':
         display_random_torsion()
     elif type_choice == '4':
@@ -116,13 +148,6 @@ def pose_type_choice():
         print(f'You entered {Fore.RED + type_choice + Fore.RESET}.')
         print('You must choose 1, 2, 3, or 4\n')
         return pose_type_choice()
-
-
-def display_random_strength():
-    """
-    Function that displays randomly the 
-    instructions to execute the strength poses.
-    """
 
 def display_random_torsion():
     """
