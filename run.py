@@ -28,8 +28,8 @@ SHEET = GSPREAD_CLIENT.open('click_pose')
 """
 Variables created to check proper connection with worksheets
 """
-stretch = SHEET.worksheet('stretch')
-data_stretch = stretch.get_all_values()
+# stretch = SHEET.worksheet('stretch')
+# data_stretch = stretch.get_all_values()
 # print(data_stretch)
 
 strength = SHEET.worksheet('strength')
@@ -68,16 +68,34 @@ def intro_click_pose():
     print(Fore.RESET)
 
 
-def display_random_stretch():
+def random_stretch():
     """
     Function that displays randomly the
-    instructions to execute the stretch poses.
+    instructions to execute the stretch poses
+    and its benefits.
     """
-    print("You chose 1")
-    stretch_row = SHEET.worksheet('stretch').row_values(2)
-    # name_stretch_poses = SHEET.worksheet('stretch').col_values(1)
-    # print(name_stretch_poses)
-    print(stretch_row)
+    print("You chose 1\n")
+
+    stretch = SHEET.worksheet('stretch')
+
+    all_stretches = []
+    for ind in range(1, 6):
+        all_col = stretch.col_values(ind)
+        all_stretches.append(all_col[1:])
+
+    name = all_stretches[0]
+    instructions = all_stretches[1]
+    benefits = all_stretches[2]
+
+    for (name, instructions, benefits) in zip(name, instructions, benefits):
+        # print(f' {name} - {instructions} - {benefits}')
+
+        print(Fore.GREEN + name)
+        print("\n")
+        print(Fore.BLUE + "INSTRUCTIONS: " + Fore.RESET + instructions)
+        print("\n")
+        print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
+        print("\n")
 
 def pose_type_choice():
     """
@@ -87,7 +105,7 @@ def pose_type_choice():
         'Please, make your choice (1, 2, 3 or 4)\n' + Fore.RESET)
     print(Fore.RESET)
     if type_choice == '1':
-        display_random_stretch()
+        random_stretch()
     elif type_choice == '2':
         display_random_strength()
     elif type_choice == '3':
