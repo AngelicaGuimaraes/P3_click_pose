@@ -1,17 +1,11 @@
 """
 Import section
 """
-import random
 import gspread
 from google.oauth2.service_account import Credentials
+from colorama import Fore, Back, Style
 from colorama import init
 init()
-from colorama import Fore
-
-"""
-Scope borrowed from Code Institute
-From Love Sandwiche's Walkthru Project
-"""
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -54,24 +48,25 @@ def intro_click_pose():
     Introduction of the application
     with greeting, instructions and purpose.
     """
+    print(Style.BRIGHT)
     print(Fore.MAGENTA + 'Wellcome to Click Pose!\n')
     print(Fore.MAGENTA + 'Let the benefits of Yoga')
     print(Fore.MAGENTA + 'indulge your body, mind and soul!')
-    print(Fore.BLUE + '\nEnter 1 to practice a STRETCH pose')
-    print(Fore.BLUE + 'Enter 2 to practice a STRENGTH pose')
-    print(Fore.BLUE + 'Enter 3 to practice a TORSION pose')
-    print(Fore.BLUE + 'Enter 4 to practice a BALANCE pose\n')
+    print(Fore.CYAN + '\nEnter 1 to practice a STRETCH pose')
+    print(Fore.CYAN + 'Enter 2 to practice a STRENGTH pose')
+    print(Fore.CYAN + 'Enter 3 to practice a TORSION pose')
+    print(Fore.CYAN + 'Enter 4 to practice a BALANCE pose\n')
     print(Fore.GREEN + "**Don't forget to leave your feedback")
     print(Fore.GREEN + "when finished" + "\U0001F64F\n")
     print(Fore.MAGENTA + "So, let's get started?")
-    print(Fore.MAGENTA + "Unfold your yoga mat and take a deep breath!")
-    print(Fore.RESET)
+    print(Fore.MAGENTA +
+        "Unfold your yoga mat and take a deep breath!" + Fore.RESET)
 
 
-def random_stretch():
+def stretch_pose():
     """
-    Function that displays randomly the
-    instructions to execute the stretch poses
+    Function that displays the instructions
+    to execute the stretch poses
     and its benefits.
     """
     print("You chose 1\n")
@@ -79,7 +74,7 @@ def random_stretch():
     stretch = SHEET.worksheet('stretch')
 
     all_stretches = []
-    for ind in range(1, 5):
+    for ind in range(1, 4):
         all_col = stretch.col_values(ind)
         all_stretches.append(all_col[1:])
 
@@ -89,18 +84,18 @@ def random_stretch():
 
     for (name, instructions, benefits) in zip(name, instructions, benefits):
         print(Fore.GREEN + name)
-        # print("\n")
-        print(Fore.BLUE + "INSTRUCTIONS: " + Fore.RESET + instructions)
+        print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + instructions)
         print("\n")
         print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
         print("\n")
-    return pose_type_choice()
+
+    return again_or_quit()
 
 
-def random_strength():
+def strength_pose():
     """
-    Function that displays randomly the
-    instructions to execute the strength poses
+    Function that displays the instructions
+    to execute the strength poses
     and its benefits.
     """
     print("You chose 2\n")
@@ -108,7 +103,7 @@ def random_strength():
     strength = SHEET.worksheet('strength')
 
     all_strengths = []
-    for ind in range(1, 5):
+    for ind in range(1, 4):
         all_col = strength.col_values(ind)
         all_strengths.append(all_col[1:])
 
@@ -118,19 +113,18 @@ def random_strength():
 
     for (name, instructions, benefits) in zip(name, instructions, benefits):
         print(Fore.GREEN + name)
-        # print("\n")
-        print(Fore.BLUE + "INSTRUCTIONS: " + Fore.RESET + instructions)
+        print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + instructions)
         print("\n")
         print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
         print("\n")
 
-    return pose_type_choice()
+    return again_or_quit()
 
 
-def random_torsion():
+def torsion_pose():
     """
-    Function that displays randomly the
-    instructions to execute the torsion poses
+    Function that displays the instructions
+    to execute the torsion poses
     and its benefits.
     """
     print("You chose 3\n")
@@ -138,7 +132,7 @@ def random_torsion():
     torsion = SHEET.worksheet('torsion')
 
     all_torsions = []
-    for ind in range(1, 5):
+    for ind in range(1, 4):
         all_col = torsion.col_values(ind)
         all_torsions.append(all_col[1:])
 
@@ -148,8 +142,7 @@ def random_torsion():
 
     for (name, instructions, benefits) in zip(name, instructions, benefits):
         print(Fore.GREEN + name)
-        # print("\n")
-        print(Fore.BLUE + "INSTRUCTIONS: " + Fore.RESET + instructions)
+        print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + instructions)
         print("\n")
         print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
         print("\n")
@@ -157,10 +150,10 @@ def random_torsion():
     return pose_type_choice()
 
 
-def random_balance():
+def balance_pose():
     """
-    Function that displays randomly the
-    instructions to execute the balance poses
+    Function that displays the instructions
+    to execute the balance poses
     and its benefits.
     """
     print("You chose 4\n")
@@ -168,7 +161,7 @@ def random_balance():
     balance = SHEET.worksheet('balance')
 
     all_balances = []
-    for ind in range(1, 5):
+    for ind in range(1, 4):
         all_col = balance.col_values(ind)
         all_balances.append(all_col[1:])
 
@@ -178,8 +171,7 @@ def random_balance():
 
     for (name, instructions, benefits) in zip(name, instructions, benefits):
         print(Fore.GREEN + name)
-        # print("\n")
-        print(Fore.BLUE + "INSTRUCTIONS: " + Fore.RESET + instructions)
+        print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + instructions)
         print("\n")
         print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
         print("\n")
@@ -191,21 +183,47 @@ def pose_type_choice():
     """
     Function that selects the user's choice
     """
-    type_choice = input(Fore.BLUE + 
-        'Please, make your choice (1, 2, 3 or 4)\n' + Fore.RESET)
+    type_choice = input(Fore.CYAN + Style.BRIGHT +
+        '\nPlease, make your choice (1, 2, 3 or 4)\n' + Fore.RESET)
     print(Fore.RESET)
     if type_choice == '1':
-        random_stretch()
+        stretch_pose()
     elif type_choice == '2':
-        random_strength()
+        strength_pose()
     elif type_choice == '3':
-        random_torsion()
+        torsion_pose()
     elif type_choice == '4':
-        random_balance()
+        balance_pose()
     else:
+        print(Fore.RED + "ERROR:" + Fore.RESET)
         print(f'You entered {Fore.RED + type_choice + Fore.RESET}.')
         print('You must choose 1, 2, 3, or 4\n')
         return pose_type_choice()
+
+
+def again_or_quit():
+    """
+    User can chooe to practice som more
+    or to quit the app.
+    """
+    print(Fore.MAGENTA + "DO YOU WANT TO PRACTICE SOME MORE YOGA?\n")
+    again_quit = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n" + Fore.RESET).lower()
+
+    if again_quit == "y":
+        pose_type_choice()
+    elif again_quit == "n":
+        print(Fore.GREEN + Style.BRIGHT + "\nSad to know that you")
+        print("want to leave.\n")
+        print("Please give a feedback, ")
+        print("so we can now how much you enjoyed the app.\n")
+        print(Fore.MAGENTA + "NAMASTE!" + "\U0001F64F\n")
+        # leave_feedback()
+    else:
+        print()
+        print(Fore.RED + "ERROR:" + Fore.RESET)
+        print(f'You entered {Fore.RED + again_quit + Fore.RESET}.')
+        print("You must type y or n.\n")
+        return again_or_quit()
 
 
 def main():
@@ -214,6 +232,8 @@ def main():
     """
     intro_click_pose()
     pose_type_choice()
+    # again_or_quit()
+    # leave_feedback()
 
 
 main()
