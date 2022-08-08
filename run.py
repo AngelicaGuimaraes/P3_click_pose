@@ -73,11 +73,11 @@ def stretch_pose():
 
     stretch = SHEET.worksheet('stretch')
 
-    all_stretches = []
+    all_stretches = []    
     for ind in range(1, 4):
         all_col = stretch.col_values(ind)
         all_stretches.append(all_col[1:])
-
+    
     name = all_stretches[0]
     instructions = all_stretches[1]
     benefits = all_stretches[2]
@@ -147,7 +147,7 @@ def torsion_pose():
         print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
         print("\n")
 
-    return pose_type_choice()
+    return again_or_quit()
 
 
 def balance_pose():
@@ -176,7 +176,7 @@ def balance_pose():
         print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
         print("\n")
 
-    return pose_type_choice()
+    return again_or_quit()
 
 
 def pose_type_choice():
@@ -217,7 +217,7 @@ def again_or_quit():
         print("Please give a feedback, ")
         print("so we can now how much you enjoyed the app.\n")
         print(Fore.MAGENTA + "NAMASTE!" + "\U0001F64F\n")
-        # leave_feedback()
+        leave_feedback()
     else:
         print()
         print(Fore.RED + "ERROR:" + Fore.RESET)
@@ -226,14 +226,40 @@ def again_or_quit():
         return again_or_quit()
 
 
+def leave_feedback():
+    """
+    Funtion for the user to leave a feedbacks
+    """
+    while True:
+            try:
+                user_feedback = int(input('Your rating: \n'))
+                break
+            except ValueError:
+                print('You must enter a number between 1 and 5')
+                continue
+    if 1 <= user_feedback <= 5:
+        user_feedback = int(user_feedback)
+        total_rating = SHEET.worksheet('feedback').cell(cell.row, (cell.col - 2)).value
+        total_rating = int(total_rating)
+        new_rating = (user_feedback + total_rating)
+        SHEET.worksheet('jokes').update_cell(cell.row, (cell.col - 2), new_rating)
+        total_number_of_ratings = SHEET.worksheet('jokes').cell(cell.row, (cell.col - 1)).value
+        total_number_of_ratings = int(total_number_of_ratings)
+        new_total_ratings = (total_number_of_ratings + 1).SHEET.worksheet('jokes').update_cell(cell.row, (cell.col - 1), new_total_ratings)
+        # pose_end()
+    else:
+        print('You must enter a number between 1 and 5')
+        enter_rating()
+    # enter_rating()
+
+
 def main():
     """
     Main function that runs the applications functions
     """
     intro_click_pose()
     pose_type_choice()
-    # again_or_quit()
-    # leave_feedback()
+    leave_feedback()
 
 
 main()
