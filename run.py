@@ -80,22 +80,6 @@ def stretch_pose():
     print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + stretch_list_1[2])
     print()
 
-    # all_stretches = []
-    # for ind in range(1, 4):
-        # all_col = stretch.col_values(ind)
-        # all_stretches.append(all_col[1:])
-
-    # name = all_stretches[0]
-    # instructions = all_stretches[1]
-    # benefits = all_stretches[2]
-
-    # for (name, instructions, benefits) in zip(name, instructions, benefits):
-        # print(Fore.GREEN + name)
-        # print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + instructions)
-        # print("\n")
-        # print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
-        # print("\n")
-
     return stretch_again_or_quit()
 
 
