@@ -68,6 +68,7 @@ def stretch_again_or_quit():
 
     another_stretch = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
         + Fore.RESET).lower()
+    print()
 
     if another_stretch == "y":
         stretch = SHEET.worksheet('stretch')
@@ -123,6 +124,7 @@ def strength_again_or_quit():
 
     another_strength = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
         + Fore.RESET).lower()
+    print()
 
     if another_strength == "y":
         strength = SHEET.worksheet('strength')
@@ -169,7 +171,7 @@ def torsion_pose():
 
 def torsion_again_or_quit():
     """
-    Function to give the user another strength pose
+    Function to give the user another torsion pose
     """
 
     print(Fore.MAGENTA + "WOULD YOU LIKE TO PRACTICE")
@@ -177,9 +179,10 @@ def torsion_again_or_quit():
 
     another_torsion = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
         + Fore.RESET).lower()
+    print()
 
     if another_torsion == "y":
-        torsion = SHEET.worksheet('strength')
+        torsion = SHEET.worksheet('torsion')
 
         torsion_list_2 = torsion.row_values(3)
         print(Fore.GREEN + torsion_list_2[0])
@@ -211,23 +214,49 @@ def balance_pose():
 
     balance = SHEET.worksheet('balance')
 
-    all_balances = []
-    for ind in range(1, 4):
-        all_col = balance.col_values(ind)
-        all_balances.append(all_col[1:])
+    balance_list_1 = balance.row_values(2)
+    print(Fore.GREEN + balance_list_1[0])
+    print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + balance_list_1[1])
+    print()
+    print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + balance_list_1[2])
+    print()
 
-    name = all_balances[0]
-    instructions = all_balances[1]
-    benefits = all_balances[2]
+    return balance_again_or_quit()
 
-    for (name, instructions, benefits) in zip(name, instructions, benefits):
-        print(Fore.GREEN + name)
-        print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + instructions)
-        print("\n")
-        print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
-        print("\n")
 
-    return again_or_quit()
+def balance_again_or_quit():
+    """
+    Function to give the user another balance pose
+    """
+
+    print(Fore.MAGENTA + "WOULD YOU LIKE TO PRACTICE")
+    print(Fore.MAGENTA + "ANOTHER BALANCE POSE?\n")
+
+    another_balance = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
+        + Fore.RESET).lower()
+    print()
+
+    if another_balance == "y":
+        balance = SHEET.worksheet('balance')
+
+        balance_list_2 = balance.row_values(3)
+        print(Fore.GREEN + balance_list_2[0])
+        print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + balance_list_2[1])
+        print()
+        print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + balance_list_2[2])
+        print()
+
+        return again_or_quit()
+
+    elif another_balance == "n":
+        again_or_quit()
+
+    else:
+        print()
+        print(Fore.RED + "ERROR:" + Fore.RESET)
+        print(f'You entered {Fore.RED + another_balance + Fore.RESET}.')
+        print("You must type y or n.\n")
+        return balance_again_or_quit()
 
 
 def pose_type_choice():
@@ -259,7 +288,8 @@ def again_or_quit():
     or to quit the app.
     """
     print(Fore.MAGENTA + "DO YOU WANT TO PRACTICE SOME MORE YOGA?\n")
-    again_quit = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n" + Fore.RESET).lower()
+    again_quit = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
+        + Fore.RESET).lower()
 
     if again_quit == "y":
         print(Fore.MAGENTA + '\nEnter 1 to practice a STRETCH pose')
