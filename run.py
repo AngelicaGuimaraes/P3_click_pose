@@ -66,8 +66,8 @@ def stretch_again_or_quit():
     print(Fore.MAGENTA + "WOULD YOU LIKE TO PRACTICE")
     print(Fore.MAGENTA + "ANOTHER STRETCH POSE?\n")
 
-    another_stretch = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n")
-    print(Fore.RESET)
+    another_stretch = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
+        + Fore.RESET).lower()
 
     if another_stretch == "y":
         stretch = SHEET.worksheet('stretch')
@@ -118,10 +118,11 @@ def strength_again_or_quit():
     """
 
     print(Fore.MAGENTA + "WOULD YOU LIKE TO PRACTICE")
-    print(Fore.MAGENTA + "ANOTHER STRENGTH POSE?\n")
-
-    another_strength = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n")
+    print(Fore.MAGENTA + "ANOTHER STRENGTH POSE?")
     print(Fore.RESET)
+
+    another_strength = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
+        + Fore.RESET).lower()
 
     if another_strength == "y":
         strength = SHEET.worksheet('strength')
@@ -156,23 +157,48 @@ def torsion_pose():
 
     torsion = SHEET.worksheet('torsion')
 
-    all_torsions = []
-    for ind in range(1, 4):
-        all_col = torsion.col_values(ind)
-        all_torsions.append(all_col[1:])
+    torsion_list_1 = torsion.row_values(2)
+    print(Fore.GREEN + torsion_list_1[0])
+    print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + torsion_list_1[1])
+    print()
+    print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + torsion_list_1[2])
+    print()
 
-    name = all_torsions[0]
-    instructions = all_torsions[1]
-    benefits = all_torsions[2]
+    return torsion_again_or_quit()
 
-    for (name, instructions, benefits) in zip(name, instructions, benefits):
-        print(Fore.GREEN + name)
-        print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + instructions)
-        print("\n")
-        print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
-        print("\n")
 
-    return again_or_quit()
+def torsion_again_or_quit():
+    """
+    Function to give the user another strength pose
+    """
+
+    print(Fore.MAGENTA + "WOULD YOU LIKE TO PRACTICE")
+    print(Fore.MAGENTA + "ANOTHER TORSION POSE?\n")
+
+    another_torsion = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
+        + Fore.RESET).lower()
+
+    if another_torsion == "y":
+        torsion = SHEET.worksheet('strength')
+
+        torsion_list_2 = torsion.row_values(3)
+        print(Fore.GREEN + torsion_list_2[0])
+        print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + torsion_list_2[1])
+        print()
+        print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + torsion_list_2[2])
+        print()
+
+        return again_or_quit()
+
+    elif another_torsion == "n":
+        again_or_quit()
+
+    else:
+        print()
+        print(Fore.RED + "ERROR:" + Fore.RESET)
+        print(f'You entered {Fore.RED + another_torsion + Fore.RESET}.')
+        print("You must type y or n.\n")
+        return torsion_again_or_quit()
 
 
 def balance_pose():
