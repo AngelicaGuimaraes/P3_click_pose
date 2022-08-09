@@ -38,8 +38,8 @@ Variables created to check proper connection with worksheets
 # data_balance = balance.get_all_values()
 # print(data_balance)
 
-feedback = SHEET.worksheet('feedback')
-data_feedback = feedback.get_all_values()
+# feedback = SHEET.worksheet('feedback')
+# data_feedback = feedback.get_all_values()
 # print(data_feedback)
 
 
@@ -73,23 +73,30 @@ def stretch_pose():
 
     stretch = SHEET.worksheet('stretch')
 
-    all_stretches = []    
-    for ind in range(1, 4):
-        all_col = stretch.col_values(ind)
-        all_stretches.append(all_col[1:])
-    
-    name = all_stretches[0]
-    instructions = all_stretches[1]
-    benefits = all_stretches[2]
+    stretch_list_1 = stretch.row_values(2)
+    print(Fore.GREEN + stretch_list_1[0])
+    print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + stretch_list_1[1])
+    print()
+    print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + stretch_list_1[2])
+    print()
 
-    for (name, instructions, benefits) in zip(name, instructions, benefits):
-        print(Fore.GREEN + name)
-        print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + instructions)
-        print("\n")
-        print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
-        print("\n")
+    # all_stretches = []
+    # for ind in range(1, 4):
+        # all_col = stretch.col_values(ind)
+        # all_stretches.append(all_col[1:])
 
-    return again_or_quit()
+    # name = all_stretches[0]
+    # instructions = all_stretches[1]
+    # benefits = all_stretches[2]
+
+    # for (name, instructions, benefits) in zip(name, instructions, benefits):
+        # print(Fore.GREEN + name)
+        # print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + instructions)
+        # print("\n")
+        # print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
+        # print("\n")
+
+    return stretch_again_or_quit()
 
 
 def strength_pose():
@@ -186,6 +193,7 @@ def pose_type_choice():
     type_choice = input(Fore.CYAN + Style.BRIGHT +
         '\nPlease, make your choice (1, 2, 3 or 4)\n' + Fore.RESET)
     print(Fore.RESET)
+
     if type_choice == '1':
         stretch_pose()
     elif type_choice == '2':
@@ -201,6 +209,47 @@ def pose_type_choice():
         return pose_type_choice()
 
 
+def stretch_again_or_quit():
+    """
+    Function to give the user another stretch pose
+    """
+    print(Fore.MAGENTA + "WOULD YOU LIKE TO PRACTICE")
+    print(Fore.MAGENTA + "ANOTHER STRETCH POSE?\n")
+
+    another_stretch = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n")
+    print(Fore.RESET)
+
+    if another_stretch == "y":
+        stretch = SHEET.worksheet('stretch')
+
+        stretch_list_2 = stretch.row_values(3)
+        print(stretch_list_2[0])
+        print(stretch_list_2[1])
+        print(stretch_list_2[2])
+
+        stretch_list_3 = stretch.row_values(4)
+        print(stretch_list_3[0])
+        print(stretch_list_3[1])
+        print(stretch_list_3[2])
+
+        stretch_list_4 = stretch.row_values(5)
+        print(stretch_list_4[0])
+        print(stretch_list_4[1])
+        print(stretch_list_4[2])
+
+        return another_stretch()
+
+    elif another_stretch == "n":
+        again_or_quit()
+
+    else:
+        print()
+        print(Fore.RED + "ERROR:" + Fore.RESET)
+        print(f'You entered {Fore.RED + another_stretch + Fore.RESET}.')
+        print("You must type y or n.\n")
+        return stretch_again_or_quit()
+
+
 def again_or_quit():
     """
     User can chooe to practice som more
@@ -210,6 +259,10 @@ def again_or_quit():
     again_quit = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n" + Fore.RESET).lower()
 
     if again_quit == "y":
+        print(Fore.MAGENTA + '\nEnter 1 to practice a STRETCH pose')
+        print(Fore.MAGENTA + 'Enter 2 to practice a STRENGTH pose')
+        print(Fore.MAGENTA + 'Enter 3 to practice a TORSION pose')
+        print(Fore.MAGENTA + 'Enter 4 to practice a BALANCE pose\n')
         pose_type_choice()
     elif again_quit == "n":
         print(Fore.GREEN + Style.BRIGHT + "\nSad to know that you")
@@ -230,6 +283,12 @@ def leave_feedback():
     """
     Funtion for the user to leave a feedbacks
     """
+    feedback = SHEET.worksheet('feedback')    
+    user_feedback = int(input('Your rating: \n'))
+    new_feedback = feedback.append(user_feedback)
+
+
+
     while True:
             try:
                 user_feedback = int(input('Your rating: \n'))
@@ -259,6 +318,7 @@ def main():
     """
     intro_click_pose()
     pose_type_choice()
+    stretch = SHEET.worksheet('stretch')
     leave_feedback()
 
 
