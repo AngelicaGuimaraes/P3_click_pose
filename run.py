@@ -19,30 +19,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('click_pose')
 
 
-"""
-Variables created to check proper connection with worksheets
-"""
-# stretch = SHEET.worksheet('stretch')
-# data_stretch = stretch.get_all_values()
-# print(data_stretch)
-
-# strength = SHEET.worksheet('strength')
-# data_strength = strength.get_all_values()
-# print(data_strength)
-
-# torsion = SHEET.worksheet('torsion')
-# data_torsion = torsion.get_all_values()
-# print(data_torsion)
-
-# balance = SHEET.worksheet('balance')
-# data_balance = balance.get_all_values()
-# print(data_balance)
-
-# feedback = SHEET.worksheet('feedback')
-# data_feedback = feedback.get_all_values()
-# print(data_feedback)
-
-
 def intro_click_pose():
     """
     Introduction of the application
@@ -81,6 +57,46 @@ def stretch_pose():
     print()
 
     return stretch_again_or_quit()
+
+def stretch_again_or_quit():
+    """
+    Function to give the user another stretch pose
+    """
+    print(Fore.MAGENTA + "WOULD YOU LIKE TO PRACTICE")
+    print(Fore.MAGENTA + "ANOTHER STRETCH POSE?\n")
+
+    another_stretch = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n")
+    print(Fore.RESET)
+
+    if another_stretch == "y":
+        stretch = SHEET.worksheet('stretch')
+
+        stretch_list_2 = stretch.row_values(3)
+        print(stretch_list_2[0])
+        print(stretch_list_2[1])
+        print(stretch_list_2[2])
+
+        stretch_list_3 = stretch.row_values(4)
+        print(stretch_list_3[0])
+        print(stretch_list_3[1])
+        print(stretch_list_3[2])
+
+        stretch_list_4 = stretch.row_values(5)
+        print(stretch_list_4[0])
+        print(stretch_list_4[1])
+        print(stretch_list_4[2])
+
+        return stretch_again_or_quit()
+
+    elif another_stretch == "n":
+        again_or_quit()
+
+    else:
+        print()
+        print(Fore.RED + "ERROR:" + Fore.RESET)
+        print(f'You entered {Fore.RED + another_stretch + Fore.RESET}.')
+        print("You must type y or n.\n")
+        return stretch_again_or_quit()
 
 
 def strength_pose():
@@ -191,47 +207,6 @@ def pose_type_choice():
         print(f'You entered {Fore.RED + type_choice + Fore.RESET}.')
         print('You must choose 1, 2, 3, or 4\n')
         return pose_type_choice()
-
-
-def stretch_again_or_quit():
-    """
-    Function to give the user another stretch pose
-    """
-    print(Fore.MAGENTA + "WOULD YOU LIKE TO PRACTICE")
-    print(Fore.MAGENTA + "ANOTHER STRETCH POSE?\n")
-
-    another_stretch = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n")
-    print(Fore.RESET)
-
-    if another_stretch == "y":
-        stretch = SHEET.worksheet('stretch')
-
-        stretch_list_2 = stretch.row_values(3)
-        print(stretch_list_2[0])
-        print(stretch_list_2[1])
-        print(stretch_list_2[2])
-
-        stretch_list_3 = stretch.row_values(4)
-        print(stretch_list_3[0])
-        print(stretch_list_3[1])
-        print(stretch_list_3[2])
-
-        stretch_list_4 = stretch.row_values(5)
-        print(stretch_list_4[0])
-        print(stretch_list_4[1])
-        print(stretch_list_4[2])
-
-        return another_stretch()
-
-    elif another_stretch == "n":
-        again_or_quit()
-
-    else:
-        print()
-        print(Fore.RED + "ERROR:" + Fore.RESET)
-        print(f'You entered {Fore.RED + another_stretch + Fore.RESET}.')
-        print("You must type y or n.\n")
-        return stretch_again_or_quit()
 
 
 def again_or_quit():
