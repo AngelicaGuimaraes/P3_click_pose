@@ -58,6 +58,7 @@ def stretch_pose():
 
     return stretch_again_or_quit()
 
+
 def stretch_again_or_quit():
     """
     Function to give the user another stretch pose
@@ -72,21 +73,13 @@ def stretch_again_or_quit():
         stretch = SHEET.worksheet('stretch')
 
         stretch_list_2 = stretch.row_values(3)
-        print(stretch_list_2[0])
-        print(stretch_list_2[1])
-        print(stretch_list_2[2])
+        print(Fore.GREEN + stretch_list_2[0])
+        print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + stretch_list_2[1])
+        print()
+        print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + stretch_list_2[2])
+        print()
 
-        stretch_list_3 = stretch.row_values(4)
-        print(stretch_list_3[0])
-        print(stretch_list_3[1])
-        print(stretch_list_3[2])
-
-        stretch_list_4 = stretch.row_values(5)
-        print(stretch_list_4[0])
-        print(stretch_list_4[1])
-        print(stretch_list_4[2])
-
-        return stretch_again_or_quit()
+        return again_or_quit()
 
     elif another_stretch == "n":
         again_or_quit()
@@ -109,23 +102,48 @@ def strength_pose():
 
     strength = SHEET.worksheet('strength')
 
-    all_strengths = []
-    for ind in range(1, 4):
-        all_col = strength.col_values(ind)
-        all_strengths.append(all_col[1:])
+    strength_list_1 = strength.row_values(2)
+    print(Fore.GREEN + strength_list_1[0])
+    print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + strength_list_1[1])
+    print()
+    print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + strength_list_1[2])
+    print()
 
-    name = all_strengths[0]
-    instructions = all_strengths[1]
-    benefits = all_strengths[2]
+    return strength_again_or_quit()
 
-    for (name, instructions, benefits) in zip(name, instructions, benefits):
-        print(Fore.GREEN + name)
-        print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + instructions)
-        print("\n")
-        print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + benefits)
-        print("\n")
 
-    return again_or_quit()
+def strength_again_or_quit():
+    """
+    Function to give the user another strength pose
+    """
+
+    print(Fore.MAGENTA + "WOULD YOU LIKE TO PRACTICE")
+    print(Fore.MAGENTA + "ANOTHER STRENGTH POSE?\n")
+
+    another_strength = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n")
+    print(Fore.RESET)
+
+    if another_strength == "y":
+        strength = SHEET.worksheet('strength')
+
+        strength_list_2 = strength.row_values(3)
+        print(Fore.GREEN + strength_list_2[0])
+        print(Fore.CYAN + "INSTRUCTIONS: " + Fore.RESET + strength_list_2[1])
+        print()
+        print(Fore.MAGENTA + "BENEFITS: " + Fore.RESET + strength_list_2[2])
+        print()
+
+        return again_or_quit()
+
+    elif another_strength == "n":
+        again_or_quit()
+
+    else:
+        print()
+        print(Fore.RED + "ERROR:" + Fore.RESET)
+        print(f'You entered {Fore.RED + another_strength + Fore.RESET}.')
+        print("You must type y or n.\n")
+        return strength_again_or_quit()
 
 
 def torsion_pose():
