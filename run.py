@@ -1,7 +1,6 @@
 """
 Import section
 """
-import sys
 import gspread
 from google.oauth2.service_account import Credentials
 from colorama import Fore, Style
@@ -303,7 +302,6 @@ def again_or_quit():
         print("want to leave.\n")
         print("Please give a feedback, so we")
         print("can know how much you enjoyed the app.\n")
-        # print(Fore.MAGENTA + "NAMASTE!" + "\U0001F64F\n")
         get_user_feedback()
     else:
         print()
@@ -326,6 +324,7 @@ def get_user_feedback():
     """
     Fuction to get the feedback from the user
     """
+    feedback_row = []
     print(Fore.GREEN + "Type a number between 1 and 5")
     print("Being '1' very bad and '5' excellent\n")
 
@@ -336,19 +335,16 @@ def get_user_feedback():
         print(Fore.MAGENTA + "Thanks for your feedback!")
         print("Hope to see you again!\n")
         print(Fore.MAGENTA + "NAMASTE!" + "\U0001F64F\n")
+        feedback_row.insert(0, user_feedback)
     else:
         print()
         print(Fore.RED + "ERROR:" + Fore.RESET)
         print(f'You entered {Fore.RED + user_feedback + Fore.RESET}.')
         print("You must type a number between 1 and 5.\n")
         get_user_feedback()
+    update_worksheet(feedback_row, 'feedback')
+    feedback_row = []
 
-
-def leave_feedback():
-    """
-    User leaves feedback
-    """
-    feedback = SHEET.worksheet('feedback')
 
 def main():
     """
@@ -356,7 +352,6 @@ def main():
     """
     intro_click_pose()
     pose_type_choice()
-    print()
 
 
 main()
