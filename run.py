@@ -1,6 +1,7 @@
 """
 Import section
 """
+import sys
 import gspread
 from google.oauth2.service_account import Credentials
 from colorama import Fore, Style
@@ -334,7 +335,7 @@ def get_user_feedback():
     if '1' <= user_feedback <= '5':
         print(Fore.MAGENTA + "Thanks for your feedback!")
         print("Hope to see you again!\n")
-        print(Fore.MAGENTA + "NAMASTE!" + "\U0001F64F\n")
+        print(Fore.BLUE + "NAMASTE!" + "\U0001F64F\n")
         feedback_row.insert(0, user_feedback)
     else:
         print()
@@ -344,6 +345,29 @@ def get_user_feedback():
         get_user_feedback()
     update_worksheet(feedback_row, 'feedback')
     feedback_row = []
+
+    end_click_pose()
+
+
+def end_click_pose():
+    """
+    Function to exit the program or to restart it
+    """
+    print(Fore.GREEN + "WOULD YOU LIKE TO QUIT CLICK POSE?\n")
+    exit_click_pose = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
+        + Fore.RESET).lower()
+    print()
+
+    if exit_click_pose == "y":
+        sys.exit(Fore.BLUE + "See You Soon!\n")
+    elif exit_click_pose == "n":
+        again_or_quit()
+    else:
+        print()
+        print(Fore.RED + "ERROR:" + Fore.RESET)
+        print(f'You entered {Fore.RED + exit_click_pose + Fore.RESET}.')
+        print("You must type y or n.\n")
+        return end_click_pose()
 
 
 def main():
