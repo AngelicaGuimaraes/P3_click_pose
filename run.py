@@ -1,9 +1,10 @@
 """
 Import section
 """
+import sys
 import gspread
 from google.oauth2.service_account import Credentials
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
 from colorama import init
 init()
 
@@ -300,10 +301,10 @@ def again_or_quit():
     elif again_quit == "n":
         print(Fore.GREEN + Style.BRIGHT + "\nSad to know that you")
         print("want to leave.\n")
-        print("Please give a feedback, ")
-        print("so we can now how much you enjoyed the app.\n")
-        print(Fore.MAGENTA + "NAMASTE!" + "\U0001F64F\n")
-        leave_feedback()
+        print("Please give a feedback, so we")
+        print("can know how much you enjoyed the app.\n")
+        # print(Fore.MAGENTA + "NAMASTE!" + "\U0001F64F\n")
+        get_user_feedback()
     else:
         print()
         print(Fore.RED + "ERROR:" + Fore.RESET)
@@ -312,38 +313,42 @@ def again_or_quit():
         return again_or_quit()
 
 
+def update_worksheet(data, worksheet):
+    """
+    Receives a list of integers to be inserted into a worksheet
+    Update the relevant worksheet with the data provided
+    """
+    worksheet_to_update = SHEET.worksheet(worksheet)
+    worksheet_to_update.append_row(data)
+
+
+def get_user_feedback():
+    """
+    Fuction to get the feedback from the user
+    """
+    print(Fore.GREEN + "Type a number between 1 and 5")
+    print("Being '1' very bad and '5' excellent\n")
+
+    user_feedback = input(Fore.CYAN
+        + "Your rating here, please: \n" + Fore.RESET)
+    print()
+    if '1' <= user_feedback <= '5':
+        print(Fore.MAGENTA + "Thanks for your feedback!")
+        print("Hope to see you again!\n")
+        print(Fore.MAGENTA + "NAMASTE!" + "\U0001F64F\n")
+    else:
+        print()
+        print(Fore.RED + "ERROR:" + Fore.RESET)
+        print(f'You entered {Fore.RED + user_feedback + Fore.RESET}.')
+        print("You must type a number between 1 and 5.\n")
+        get_user_feedback()
+
+
 def leave_feedback():
     """
-    Funtion for the user to leave a feedbacks
+    User leaves feedback
     """
-    feedback = SHEET.worksheet('feedback')    
-    user_feedback = int(input('Your rating: \n'))
-    new_feedback = feedback.append(user_feedback)
-
-
-
-    while True:
-            try:
-                user_feedback = int(input('Your rating: \n'))
-                break
-            except ValueError:
-                print('You must enter a number between 1 and 5')
-                continue
-    if 1 <= user_feedback <= 5:
-        user_feedback = int(user_feedback)
-        total_rating = SHEET.worksheet('feedback').cell(cell.row, (cell.col - 2)).value
-        total_rating = int(total_rating)
-        new_rating = (user_feedback + total_rating)
-        SHEET.worksheet('jokes').update_cell(cell.row, (cell.col - 2), new_rating)
-        total_number_of_ratings = SHEET.worksheet('jokes').cell(cell.row, (cell.col - 1)).value
-        total_number_of_ratings = int(total_number_of_ratings)
-        new_total_ratings = (total_number_of_ratings + 1).SHEET.worksheet('jokes').update_cell(cell.row, (cell.col - 1), new_total_ratings)
-        # pose_end()
-    else:
-        print('You must enter a number between 1 and 5')
-        enter_rating()
-    # enter_rating()
-
+    feedback = SHEET.worksheet('feedback')
 
 def main():
     """
@@ -351,8 +356,7 @@ def main():
     """
     intro_click_pose()
     pose_type_choice()
-    stretch = SHEET.worksheet('stretch')
-    leave_feedback()
+    print()
 
 
 main()
