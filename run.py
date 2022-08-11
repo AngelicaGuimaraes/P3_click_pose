@@ -321,13 +321,14 @@ def update_worksheet(data, worksheet):
     worksheet_to_update.append_row(data)
 
 
+# Assistance came from my friend, Mats Simonsson, credited in README.
 def get_user_feedback():
     """
     Fuction to get the feedback from the user
     """
     feedback_row = []
     print(Fore.GREEN + "Type a number between 1 and 5")
-    print("Being '1' very bad and '5' excellent\n")
+    print("Being '1' very bad and '5' excellent.\n")
 
     user_feedback = input(Fore.CYAN
         + "Your rating here, please: \n" + Fore.RESET)
