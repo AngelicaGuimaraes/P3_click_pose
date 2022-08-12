@@ -36,9 +36,8 @@ def intro_click_pose():
     print(Fore.GREEN + "**Don't forget to leave your feedback")
     print(Fore.GREEN + "when finished" + "\U0001F64F\n")
     print(Fore.MAGENTA + "So, let's get started?")
-    print(
-        Fore.MAGENTA + "Unfold your yoga mat and take a deep breath!"
-        + Fore.RESET)
+    print(Fore.MAGENTA +
+          "Unfold your yoga mat and take a deep breath!" + Fore.RESET)
 
 
 def stretch_pose():
@@ -68,9 +67,9 @@ def stretch_again_or_quit():
     print(Fore.MAGENTA + "WOULD YOU LIKE TO PRACTICE")
     print(Fore.MAGENTA + "ANOTHER STRETCH POSE?\n")
 
-    another_stretch = input(
-        Fore.CYAN + "Type Yes 'y' or No 'n'\n",
-        + Fore.RESET).lower()
+    another_stretch = input(Fore.CYAN +
+                            "Type Yes 'y' or No 'n'\n"
+                            + Fore.RESET).lower()
     print()
 
     if another_stretch == "y":
@@ -125,9 +124,8 @@ def strength_again_or_quit():
     print(Fore.MAGENTA + "ANOTHER STRENGTH POSE?")
     print(Fore.RESET)
 
-    another_strength = input(
-        Fore.CYAN + "Type Yes 'y' or No 'n'\n",
-        + Fore.RESET).lower()
+    another_strength = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
+                             + Fore.RESET).lower()
     print()
 
     if another_strength == "y":
@@ -181,9 +179,8 @@ def torsion_again_or_quit():
     print(Fore.MAGENTA + "WOULD YOU LIKE TO PRACTICE")
     print(Fore.MAGENTA + "ANOTHER TORSION POSE?\n")
 
-    another_torsion = input(
-        Fore.CYAN + "Type Yes 'y' or No 'n'\n",
-        + Fore.RESET).lower()
+    another_torsion = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
+                            + Fore.RESET).lower()
     print()
 
     if another_torsion == "y":
@@ -237,9 +234,8 @@ def balance_again_or_quit():
     print(Fore.MAGENTA + "WOULD YOU LIKE TO PRACTICE")
     print(Fore.MAGENTA + "ANOTHER BALANCE POSE?\n")
 
-    another_balance = input(
-        Fore.CYAN + "Type Yes 'y' or No 'n'\n",
-        + Fore.RESET).lower()
+    another_balance = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
+                            + Fore.RESET).lower()
     print()
 
     if another_balance == "y":
@@ -269,10 +265,9 @@ def pose_type_choice():
     """
     Function that selects the user's choice
     """
-    type_choice = input(
-        Fore.CYAN + Style.BRIGHT +
-        '\nPlease, make your choice (1, 2, 3 or 4)\n',
-        + Fore.RESET)
+    type_choice = input(Fore.CYAN + Style.BRIGHT +
+                        '\nPlease, make your choice (1, 2, 3 or 4)\n'
+                        + Fore.RESET)
     print(Fore.RESET)
 
     if type_choice == '1':
@@ -296,9 +291,8 @@ def again_or_quit():
     or to quit the app.
     """
     print(Fore.MAGENTA + "DO YOU WANT TO PRACTICE SOME MORE YOGA?\n")
-    again_quit = input(
-        Fore.CYAN + "Type Yes 'y' or No 'n'\n",
-        + Fore.RESET).lower()
+    again_quit = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
+                       + Fore.RESET).lower()
 
     if again_quit == "y":
         print(Fore.MAGENTA + '\nEnter 1 to practice a STRETCH pose')
@@ -338,9 +332,8 @@ def get_user_feedback():
     print(Fore.GREEN + "Type a number between 1 and 5")
     print("Being '1' very bad and '5' excellent.\n")
 
-    user_feedback = input(
-        Fore.CYAN + "Your rating here, please: \n",
-        + Fore.RESET)
+    user_feedback = input(Fore.CYAN + "Your rating here, please: \n"
+                          + Fore.RESET)
     print()
     if '1' <= user_feedback <= '5':
         print(Fore.MAGENTA + "Thanks for your feedback!")
@@ -364,9 +357,8 @@ def end_click_pose():
     Function to exit the program or to restart it
     """
     print(Fore.GREEN + "WOULD YOU LIKE TO QUIT CLICK POSE?\n")
-    exit_click_pose = input(
-        Fore.CYAN + "Type Yes 'y' or No 'n'\n",
-        + Fore.RESET).lower()
+    exit_click_pose = input(Fore.CYAN + "Type Yes 'y' or No 'n'\n"
+                            + Fore.RESET).lower()
     print()
 
     if exit_click_pose == "y":
