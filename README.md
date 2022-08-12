@@ -144,49 +144,23 @@ Python libraries and api used
 - [Sys](https://docs.python.org/3/library/sys.html)
 - [Random](https://docs.python.org/3/library/random.html)
 - [Google auth](https://google-auth.readthedocs.io/en/master/index.html)
-- [Termcolor](https://pypi.org/project/termcolor/)
+- [Colorama](https://pypi.org/project/colorama/)
 
 ### Data storage
 
-Jokes, submitted jokes, sumbmitter name and scores are fetched and stored in a Google Sheet using:
+Poses, intructions, benefits and feedbacks are fetched and stored in a Google Sheets using:
 
 - [Google Drive API](https://developers.google.com/drive/api)
 - [Google Sheet API](https://developers.google.com/sheets/api)
 
-
-
 ## Testing 
 
-Testing has been conducted continuously during the development process. Manual testing has been conducted by the author and my mentor [Martina Terlevic](https://www.linkedin.com/in/martinaterlevic/) and fellow student [Lauren-Nicole Popich](https://www.linkedin.com/in/lauren-nicole-popich-1ab87539/). Read more about bugs during development and unfixed bugs for more information.
-
-
+Testings have been conducted continuously during the development process. Manual testings have been conducted by the author and my fellow student and friend [Mats Simonsson](https://www.linkedin.com/in/mats-simonsson-2aa6874/).
 
 ### Bugs during development
 
 - Using Colorama library but my tests are not working. When I do a print syntax with the provided syntax to change the font color "Hello World" is not printing.
   - <i>Used the wrong syntax. Needed to add a "+" sign before the string</i>
-- Pure strings are using the selected colors but all prints from the worksheet are still white and I get a syntax error.
-  - <i>Tried Termcolor library instead of Colorama library and it did the trick</i>
-- Get error messages when I try to access a specific row in the worksheet
-  - <i>Used the wrong syntax for the library Gspread. Tried to install and import a different library but that was also problematic. Eventually I found the syntax for the Gspread library and it worked.</i>
-- Not able to add new rating with total rating
-  - <i>The variables were strings, converted them to int's and it worked</i>
-- Not able to get a proper error message when rating not entered correctly
-  - <i>Used an if/else statement to check and return if input is faulty</i>
-- The worksheet is not updating correctly. Can't figure out why.
-  - <i>Went back to look at Love Sandwiches and created a function that updates the worksheet based on that project</i>
-- Can't figure out how to correctly copy the formula needed in the spreadsheet to get average rating.
-  - <i>Will try to do the calculation inside Python instead. Update: Did overhaul all that had to do with average score. Removed the calculation of score from the spreadsheet and did the calculation in run.py instead</i>
-- When a joke is rated with a number containing a . or a , the application crashes.
-  - <i>Added a try statement to check that the input is an integer</i>
-- On the end screens: If an integer or float value is entered the application crashes.
-  - <i>Created a nested function inside the end function that validates the input and prevents crashing</i>
-- Application crashes if enter is pressed without a value in the end screens.
-  - <i>Created a nested function inside the end function that validates the input and prevents crashing</i>
-- Users can submit joke and name with only white spaces.
-  - <i>Added nested functions in both submit functions for joke and name that controlls lenght and check for white spaces.Found information on how to do it on https://www.geeksforgeeks.org/python-string-isspace-method/</i>
-- Average score is not calculated properly.
-  - <i>The formula for average score was not correct. It contained wrong values. Corrected.</i>
 
 ### Validator Testing 
 
