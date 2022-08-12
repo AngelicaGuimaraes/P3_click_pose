@@ -1,6 +1,6 @@
 # Click Pose
 
-![Responsive screenshot](/images/screen_capture_responsive.png)
+![Responsive screenshot](/assets/images/screen_capture_responsive.png)
 
 # The purpose with this project
 
@@ -71,13 +71,13 @@ Click Pose is a console based application. For that reason, not much work was pu
 
 This is the initial wireframe:
 
-![Initial wireframe](/images/wireframe_initial.png)
+![Initial wireframe](/assets/images/wireframe_initial.png)
 
 During the development process, a few things were changed in the wireframe. The main reason was that I wanted to leave some features to be added later, e.g different levels of difficulty for the user to challenge himself even more.
 
 After the final modifications, the final application wireframe looks like this:
 
-![Final wireframe](/images/wireframe_final.png)
+![Final wireframe](/assets/images/wireframe_final.png)
 
 [Back to top](#click-pose)
 
@@ -89,47 +89,48 @@ After the final modifications, the final application wireframe looks like this:
 
 On the Landing Page the user is greated and he has the option to choose between 4 different categories of poses.
 
-![Landing Page](/images/screen_capture_start.png)
+![Landing Page](/assets/images/screen_capture_start.png)
 
 #### First Pose Selected
 
 After selection, the user is presented with a pose from the Google sheets. The user is also asked whether he wants to practice another pose from the same category, with the option to choose between 'Yes' or 'No'.
 
-![First Pose Selected](/images/screen_capture_stretch.png)
+![First Pose Selected](/assets/images/screen_capture_stretch.png)
 
 #### Another Pose
 
 When the option has been given by the user, he is brought to another pose of the same category or he is asked whether he wants to continue practicing yoga, depending on his previous choice.
 
-![Another Pose](/images/screen_capture_another_pose.png)
+![Another Pose](/assets/images/screen_capture_another_pose.png)
 
 #### More Yoga
 
 If 'No' is selected, the user will be asked whether he wants to practice more yoga and the option to answer with a 'Yes' or 'No'.
 
-![More Yoga?](/images/screen_capture_more_yoga.png)
+![More Yoga?](/assets/images/screen_capture_more_yoga.png)
 
 #### Back to Menu
 
 If the user chooses to continue practicing more yoga poses, he will be brougth back to the menu.
 
-![Back to Menu](/images/screen_capture_back_to_menu.png)
+![Back to Menu](/assets/images/screen_capture_back_to_menu.png)
 
 #### Leave Feedback
 
 Otherwwise, he will be asked to leave a feedback before leaving the app.
 
-![Leave Feedback](/images/screen_capture_leave_feedback.png)
+![Leave Feedback](/assets/images/screen_capture_leave_feedback.png)
 
 #### Quit App
 
 User will be thanked for leaving his feedback and will be asked if he wants to quit the app.
 
-![Quit App](/images/screen_capture_quit.png)
+![Quit App](/assets/images/screen_capture_quit.png)
 
 ## Features Left to Implement
 
 For a future version of this app, options of different levels of dificulty will be added, as well as more poses for the user to practice.
+Also, will be shown to the user, the avarage of the ratings.
 
 [Back to top](#click-pose)
 
@@ -142,25 +143,24 @@ Main language
 Python libraries and api used
 
 - [Sys](https://docs.python.org/3/library/sys.html)
-- [Random](https://docs.python.org/3/library/random.html)
 - [Google auth](https://google-auth.readthedocs.io/en/master/index.html)
 - [Colorama](https://pypi.org/project/colorama/)
 
 ### Data storage
 
-Poses, intructions, benefits and feedbacks are fetched and stored in a Google Sheets using:
+Poses, intructions, benefits and feedbacks are fetched and stored in a Google Sheet using:
 
 - [Google Drive API](https://developers.google.com/drive/api)
 - [Google Sheet API](https://developers.google.com/sheets/api)
 
 ## Testing 
 
-Testings have been conducted continuously during the development process. Manual testings have been conducted by the author and my fellow student and friend [Mats Simonsson](https://www.linkedin.com/in/mats-simonsson-2aa6874/).
+Testings have been conducted continuously during the development process. Manual testings have been conducted by the author, my fellow student and friend [Mats Simonsson](https://www.linkedin.com/in/mats-simonsson-2aa6874/) and also my fellow student [Lauren-Nicole Popich](https://www.linkedin.com/in/lauren-nicole-popich-1ab87539/).
 
 ### Bugs during development
 
-- Using Colorama library but my tests are not working. When I do a print syntax with the provided syntax to change the font color "Hello World" is not printing.
-  - <i>Used the wrong syntax. Needed to add a "+" sign before the string</i>
+- Problems to create a random loop between various poses from the same category.
+  - <i>Left this version of the app with only two options for each category and placed them in different functions and used an if else statement to call them.</i>
 
 ### Validator Testing 
 
@@ -168,17 +168,17 @@ The code has also been tested by using PEP8 Online http://pep8online.com/.
 
 Final testing warned about long lines. This has been corrected and the code passes without any issues.
 
+![PEP8 Validation](/assets/images/screen_capture_PEP8.png)
+
 ### Unfixed Bugs
 
-Currently working to solve the bugs in this list. They will be moved to the Bugs during development section when they are solved.
+- No known bugs at this point.
 
-- No known bugs at this point
-
- [Back to top](#dad-jokes)
+ [Back to top](#click-pose)
 
 ## Development and Deployment
 
-The development environment used for this project was GitPod. To track the development stage and handle version control regular commits and pushes to GitHub has been conducted. The GitPod environment was created using a template provided by Code Institute.
+The development environment used for this project was GitPod. To track the development stage and handle version control regular commits and pushes to GitHub have been conducted. The GitPod environment was created using a template provided by Code Institute.
 
 The live version of the project is deployed using Heroku(https://heroku.com)
 
@@ -211,12 +211,15 @@ Deploying your app to heroku
  - command: git push origin main
  - command: git push heroku main
 
-After those steps were taken the application was deployed at the following link: https://dad-jokes-1.herokuapp.com/
+After those steps were taken the application was deployed at the following link: https://click-pose.herokuapp.com
 
 ## Content 
 
-- All text content in the application is created by the author of the project.
-- The initial 24 jokes in the Google Sheet are credited to [Country Living](https://www.countryliving.com/life/a27452412/best-dad-jokes/) and the submitter name for these jokes are set to CL
+- All instructions and benefits on the Google Sheet are credited to:
+- [Prevention](https://www.prevention.com/fitness/workouts/g30417941/best-yoga-stretches/)
+- [Yogi Approved.com](https://www.yogiapproved.com)
+- [Daily Burn](https://dailyburn.com/)
+- [Yoga Baics](https://www.yogabasics.com)
 
 ## Credits 
 
@@ -228,7 +231,9 @@ I have consulted numerous websites, individuals and slack channels to get suppor
  - [Code Institute - Love Sandwiches](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode) for inspiration and understanding on how to develope the project.
  - [W3 Schools](https://www.w3schools.com/python/python_lists.asp) for understanding how to remove items from lists.
  - [W3 Schools](https://www.w3schools.com/python/gloss_python_type_conversion.asp) for understanding variable conversion.
+ - []
  - [Code Institute](https://codeinstitute.net/) for all course material leading up to this project.
+ 
 
 ### Acknowledgment
 
