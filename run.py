@@ -37,7 +37,7 @@ def intro_click_pose():
     print(Fore.GREEN + "when finished" + "\U0001F64F\n")
     print(Fore.MAGENTA + "So, let's get started?")
     print(
-        Fore.MAGENTA + "Unfold your yoga mat and take a deep breath!",
+        Fore.MAGENTA + "Unfold your yoga mat and take a deep breath!"
         + Fore.RESET)
 
 

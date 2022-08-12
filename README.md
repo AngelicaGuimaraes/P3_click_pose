@@ -93,7 +93,7 @@ On the Landing Page the user is greated and he has the option to choose between 
 
 #### First Pose Selected
 
-After selection, the user is presented with a pose from the Google sheets. The user is also asked whether he wants to practice another pose from the same category, with the option to choose between 'Yes' or 'No'.
+After selection, the user is presented with a pose from the Google Sheets. The user is also asked whether he wants to practice another pose from the same category, with the option to choose between 'Yes' or 'No'.
 
 ![First Pose Selected](/assets/images/screen_capture_stretch.png)
 
@@ -155,12 +155,15 @@ Poses, intructions, benefits and feedbacks are fetched and stored in a Google Sh
 
 ## Testing 
 
-Testings have been conducted continuously during the development process. Manual testings have been conducted by the author, my fellow student and friend [Mats Simonsson](https://www.linkedin.com/in/mats-simonsson-2aa6874/) and also my fellow student [Lauren-Nicole Popich](https://www.linkedin.com/in/lauren-nicole-popich-1ab87539/).
+Testings have been conducted continuously during the development process.
+Manual testings have been conducted by the author, my fellow student and friend [Mats Simonsson](https://www.linkedin.com/in/mats-simonsson-2aa6874/) and also my fellow student [Lauren-Nicole Popich](https://www.linkedin.com/in/lauren-nicole-popich-1ab87539/).
 
 ### Bugs during development
 
 - Problems to create a random loop between various poses from the same category.
   - <i>Left this version of the app with only two options for each category and placed them in different functions and used an if else statement to call them.</i>
+- Problems to send the ratings to the Google Sheet.
+  - <i>My fellow student, Mats Simonsson, helped me to create the right function for that purpose.
 
 ### Validator Testing 
 
@@ -229,17 +232,19 @@ I have consulted numerous websites, individuals and slack channels to get suppor
 
  - [Google Sheets for Developers](https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets/cells) for information about exctracting information from a Google Sheet.
  - [Code Institute - Love Sandwiches](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode) for inspiration and understanding on how to develope the project.
- - [W3 Schools](https://www.w3schools.com/python/python_lists.asp) for understanding how to remove items from lists.
- - [W3 Schools](https://www.w3schools.com/python/gloss_python_type_conversion.asp) for understanding variable conversion.
- - []
+ - [W3 Schools](https://www.w3schools.com/python/python_lists_loop.asp) for understanding how to loop trhough lists.
+ - [pypi.org](https://pypi.org/project/colorama/) for understanding how to change text color on the console.
+ - [PEP 8](https://peps.python.org/pep-0008/#should-a-line-break-before-or-after-a-binary-operator) to understand about line breaks.
  - [Code Institute](https://codeinstitute.net/) for all course material leading up to this project.
  
 
 ### Acknowledgment
 
- - [Martina Terlevic](https://www.linkedin.com/in/martinaterlevic/) My fantastic mentor at Code Institute, thank you for your support, feedback, bug testing and great sense of humor.
- - [Lauren-Nicole Popich](https://www.linkedin.com/in/lauren-nicole-popich-1ab87539/) Thank you for testing and contribution of ideas and dealing with my stress over this project.
+ - [Martina Terlevic](https://www.linkedin.com/in/martinaterlevic/) My amazing mentor at Code Institute. Thank you for your support, feedback, and for keeping me on the right track.
+ - [Mats Simonsson](https://www.linkedin.com/in/mats-simonsson-2aa6874/) My fellow student, dear friend and mentor. Thank you for all the patience, for spending so much time helping me with my questions, for helping me during the tough moments and for helping me with the code.
 
- [Am I Responsive](http://ami.responsivedesign.is/) was used to create the image on top of this ReadMe
+ - [Am I Responsive](http://ami.responsivedesign.is/) was used to create the image on top of this ReadMe
 
-[Back to top](#dad-jokes)
+ - [Canva](https://www.canva.com/) was used to create the wireframe for this project.
+
+[Back to top](#click-pose)
